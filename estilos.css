@@ -1,26 +1,50 @@
-
-body {
-  background-color: #f3f5f8; 
-  color: #1b3452;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  font-size: 1rem; 
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+body {
+  background-color: #f4f6f9; 
+  color: #1b1b1b;
+  font-size: 1rem;
+  line-height: 1.5;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Accesibilidad */
+
+.salto {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}
+
+.salto:focus {
+  top: 0;
+  left: 1rem;
+  background-color: #12355b; 
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  z-index: 100;
+  text-decoration: none;
+}
+
+/* Cabecera */
 .cabecera {
-  background-color: #1b3452; 
+  background-color: #12355b; 
   color: #ffffff;
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 1rem 2.5rem;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
 .cabecera__marca {
-  color: #ffffff;
   font-weight: bold;
   font-size: 1.15rem;
 }
@@ -40,46 +64,342 @@ body {
   padding-bottom: 0.25rem;
 }
 
-.menu__enlace[aria-current="page"] {
-  font-weight: bold;
-  border-bottom: 3px solid #facc15;
+.menu__enlace:hover {
+  text-decoration: underline;
 }
 
-.principal{
-    flex:1;
-    padding: 1.75rem;
+.menu__enlace[aria-current="page"] {
+  font-weight: bold;
+  border-bottom: 3px solid #ffd166; 
+}
+
+/* Contenedor Principal*/
+
+.principal {
+  flex: 1;
+  padding: 1.75rem 1.5rem;
+  max-width: 75rem;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .principal h1 {
     text-align: center;
-    color: #1b365d;
+    color: #12355b;
     font-size: 1.75rem;
+    margin-bottom: 0.75rem;
 }
 
-.pie{
-    background-color: #1b365d;
-    color: #ffffff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.85rem 2.5rem;
-    font-size: 0.85rem;
+.principal > p {
+  text-align: center;
+  max-width: 48rem;
+  margin: 0 auto 2rem auto;
 }
 
-.pie__texto{
-  color: floralwhite;
+.contenido {
+  display: grid;
+  gap: 1.5rem;
 }
 
-.pie__lista{
-    display: flex;
-    list-style: none;
-    gap: 1.5rem;
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; 
 }
 
-.pie__enlace{
-    color: #ffffff;
-    text-decoration: underline;
+/* Tarjetas Y Bloques de campos */
+.grupo {
+  background-color: #ffffff; 
+  border: 1px solid #b7c0cc; 
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+
+.grupo__titulo {
+  color: #12355b; 
+  font-weight: bold;
+  font-size: 1.2rem; 
+  padding: 0 0.5rem;
+}
+
+.grupo__campos {
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 1rem; 
+}
+
+/*Campos e inputs*/
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem; 
+}
+
+.campo__etiqueta{
+  font-weight: bold;
+}
+
+.campo__control {
+  width: 100%;
+  min-height: 44px; 
+  font-size: 1rem;
+  color: #1b1b1b; 
+  border: 2px solid #5b6b7f; 
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+}
+
+.campo__control:focus {
+  outline: 3px solid #0a5bd3; 
+  border-color: #0a5bd3; 
+}
+
+.campo__control:invalid:not(:placeholder-shown) {
+  border-color: #b3261e; 
+}
+
+.campo__ayuda {
+  font-size: 0.875rem; 
+  color: #4a5568; 
+}
+
+.campo__pie {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/*Telefono*/
+
+.telefono {
+  display: grid;
+  grid-template-columns: minmax(6rem, 9.5rem) 1fr; 
+  gap: 0.5rem; 
+}
+
+/*Casillas*/
+
+.opciones {
+  border: none;
+}
+
+.opciones__pregunta {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.opciones__lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr)); 
+  gap: 0.5rem 1.5rem; 
+}
+
+.opcion{
+  display:grid;
+  grid-template-columns: 1.5rem 1fr;
+  gap: 0.5rem;
+  align-items: center;
+  min-height: 44px;
+}
+
+.opcion__marca{
+  width: 1.5rem ;
+  height: 1rem;
+  accent-color:#12355b ;
+}
+
+.opcion--larga{
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+/*Botones*/
+
+.botonera{
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem ;
+}
+
+.boton {
+  min-height: 44px; 
+  padding: 0.75rem;
+  font-family: inherit;
+  font-weight: bold; 
+  font-size: 1rem;
+  border-radius: 0.375rem; 
+  cursor: pointer;
+}
+
+.boton--principal {
+  background-color: #12355b; 
+  color: #ffffff; 
+  border: 2px solid #12355b;
+}
+
+.boton--secundario {
+  background-color: #ffffff; 
+  color: #12355b;
+  border: 2px solid #12355b; 
+}
+
+.boton--borrar {
+  background-color: #ffffff; 
+  color: #1b1b1b;
+  border: 2px solid #5b6b7f; 
+}
+
+/*Cuadro*/
+
+.ayuda {
+  background-color: #ffffff; 
+  border: 1px solid #b7c0cc; 
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+
+.ayuda__titulo {
+  color: #12355b; 
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.ayuda__lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ayuda__paso {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.ayuda__numero {
+  width: 2rem;
+  height: 2rem;
+  background-color: #12355b; 
+  color: #ffffff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: bold;
+}
+
+.ayuda__texto {
+  font-size: 0.95rem;
 }
 
 
 
+/* Pie de Pagina */
+.pie {
+  background-color: #12355b; 
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 2.5rem;
+  font-size: 0.85rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.pie__texto {
+  color: #ffffff;
+}
+
+.pie__lista {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.pie__enlace {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+
+/* GRID */
+
+@media (min-width: 40em ) {
+
+  .grupo--personales .grupo__campos {
+    grid-template-columns: repeat(6, 1fr); 
+    gap: 1rem 1.5rem; 
+    grid-template-areas:
+      "nombre nombre apellidos apellidos apellidos apellidos"
+      "correo correo correo telefono telefono telefono"
+      "nacimiento nacimiento . . . ."; 
+  }
+
+    .grupo--academicos .grupo__campos {
+    grid-template-columns: repeat(6, 1fr); 
+    gap: 1rem 1.5rem; 
+    grid-template-areas:
+      "ciclo ciclo ciclo curso curso curso"
+      "nota nota idiomas idiomas idiomas idiomas"; 
+  }
+
+  .grupo--destino .grupo__campos {
+    grid-template-columns: repeat(6, 1fr); 
+    gap: 1rem 1.5rem; 
+    grid-template-areas:
+      "pais pais pais incorporacion incorporacion incorporacion"
+      "duracion duracion duracion duracion duracion duracion"; 
+  }
+
+  .grupo--motivacion .grupo__campos {
+    grid-template-columns: repeat(6, 1fr); 
+    gap: 1rem 1.5rem; 
+    grid-template-areas:
+      "carta carta carta carta carta carta"
+      "curriculum curriculum curriculum curriculum curriculum curriculum"; 
+  }
+
+    /* Asignación de áreas por nombre */
+  .campo--nombre { grid-area: nombre; } 
+  .campo--apellidos { grid-area: apellidos; } 
+  .campo--correo { grid-area: correo; } 
+  .campo--telefono { grid-area: telefono; } 
+  .campo--nacimiento { grid-area: nacimiento; } 
+
+  .campo--ciclo { grid-area: ciclo; } 
+  .campo--curso { grid-area: curso; } 
+  .campo--nota { grid-area: nota; } 
+  .campo--idiomas { grid-area: idiomas; } 
+
+  .campo--pais { grid-area: pais; } 
+  .campo--incorporacion { grid-area: incorporacion; } 
+  .campo--duracion { grid-area: duracion; } 
+
+  .campo--carta { grid-area: carta; } 
+  .campo--curriculum { grid-area: curriculum; } 
+
+  .campo__pie {
+    flex-direction: row; 
+    justify-content: space-between; 
+  }
+
+  .botonera {
+    flex-direction: row; 
+    justify-content: space-between; 
+  }
+
+  .boton--secundario {
+    margin-left: auto; 
+  }
+}
+
+@media (min-width: 56em) { 
+  .contenido {
+    grid-template-columns: 1fr 20rem; 
+    gap: 2rem;
+    align-items: start;
+  }
+}
